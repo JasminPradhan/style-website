@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi+Fun:wght@400&display=swap');
+*{
+padding: 0;
+margin: 0;
+}
+.main{
+    margin-top: 9.2rem;
+    padding-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center; 
+    background-color: rgba(220, 202, 250, 0.586);
+}
+.cat{
+    position: relative;
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+    
+}
+.img{
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 2rem;
+
+}
+img{
+    width: 23rem;
+    height: 15rem;
+    border-radius: 1%;
+    opacity: 80%;
+    transition: width 300ms, height 300ms, opacity 200ms;
+}
+.title{
+    position: absolute;
+    font-family: 'Reem Kufi Fun', sans-serif !important;
+    color: rgb(38, 2, 38);
+    padding: 1rem;
+    // top: 4rem;
+    // left: 7rem; 
+    text-align: center;
+    border-style: double;
+    width: 9.6rem;
+    height: 3rem;
+    // transition: width 200ms, height 200ms;
+    cursor: pointer;
+}
+
+    .cat:hover img{
+        // width: 25.2rem ;
+        // height: 17.2rem ;
+        opacity: 50% ;
+    }
+
+
+

@@ -1,0 +1,43 @@
+
+@mixin shrinkLabel {
+    top: -1.18rem;
+    font-size: 15px;
+    color: rgba(233, 202, 255, 0.912);
+    }
+.form-input{
+    position: relative;
+    margin: 3rem 3rem 3rem 0rem;
+    padding-left: 0rem;
+
+    .input-field{
+        background: none;
+        background-color: rgba(169, 137, 184, 0.421);
+        color: rgb(233, 210, 252);
+        font-size: 18px;
+        width: 26.6rem;
+        height: 2rem;
+        padding-left: .2rem;
+        // padding: .5rem .5rem;
+        display: block;
+        border: none;
+        border-bottom: .05rem solid rgba(24, 3, 33, 0.754);
+        &:focus{
+            outline: none;
+        }  
+        &:focus ~ .form-label{
+            @include shrinkLabel();
+        }
+    }
+    .form-label{
+        position: absolute;
+        transition: 300ms ease all;
+        top: 0.3rem;
+        // left: .5rem;
+        color: rgba(255, 255, 255, 0.289);
+        // pointer-events: none;
+        &.shrink{
+            // transition: 300ms;
+            @include shrinkLabel();
+        }
+    }
+}
