@@ -7,12 +7,8 @@ import "./nav.component.scss";
 
 const Navbar = () => {
 
-    const {currentUser,setCurrentUser}= useContext(UserContext);
+    const {currentUser}= useContext(UserContext);
     
-    const signOutHandler = async()=>{
-        await signOutUser();
-        setCurrentUser(null);
-    }
 
     return (
     <div>
@@ -28,7 +24,7 @@ const Navbar = () => {
                     :
                     (<Link className="li" to='/auth'>Sign in</Link>)
                 }
-                <span className="li" onClick={signOutHandler}>user</span>
+                <span className="li" onClick={signOutUser}>user</span>
             </div>
         </nav>
         <Outlet />

@@ -2,12 +2,12 @@
 import { initializeApp } from "firebase/app";
 import {
     getAuth,
-    // signInWithPopup,
     signInWithRedirect,
     GoogleAuthProvider,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
-    signOut
+    signOut,
+    onAuthStateChanged
 } from 'firebase/auth'
 
 import {
@@ -36,8 +36,6 @@ provider.setCustomParameters({
 })
 
 export const auth = getAuth();
-
-// export const signInWithGooglePopup=()=>signInWithPopup(auth,provider);
 
 export const signInWithGoogleRedirect = () => signInWithRedirect(auth, provider);
 
@@ -87,50 +85,5 @@ export const signInAuthUserWithEmailAndPassword = async(email,password)=>{
 
 export const signOutUser = async ()=> await signOut(auth);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// export const creatUserDocFromAuth = async(userAuth)=>{
-//     const userDocRef = doc(db,'users',userAuth.uid);
-
-//     // console.log(userDocRef);
-
-//     const userSnapshot = await getDocs(collection(userDocRef));
-
-//     if(!userSnapshot.exists())
-//     {
-//         const {displayName, email}= userAuth;
-//         const createdAt = new Date();
-
-//         try {
-//             await setDoc(userDocRef,{
-//                 displayName,
-//                 email,
-//                 createdAt
-//             });
-//         } catch (error) {
-//             console.log('error creating the user',error.message);
-//         }
-//     }
-
-//     return userDocRef;
-
-    //if userdata does not exist
-    //create /set the document with the data from userAuth in my collection
-
-    //if user data exists
-    //return userDocRef
-// }
+//open listener
+export const onAuthStateChangedListener =(callback)=>onAuthStateChanged(auth,callback);

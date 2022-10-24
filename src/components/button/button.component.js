@@ -5,7 +5,7 @@ const BUTTON_TYPE = {
     inverted: 'inverted'
 }
 
-const Button = ({ props, btnType, ...otherProps }) => {
+const Button = ({ props,icons, btnType, ...otherProps }) => {
     return (
         <button
             className={`button ${BUTTON_TYPE[btnType]}`}

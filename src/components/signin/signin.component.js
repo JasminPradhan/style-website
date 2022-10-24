@@ -1,11 +1,7 @@
-import { useState,useContext } from 'react'
-import { UserContext } from '../../context/user.context';
+import { useState,useEffect } from 'react'
 import { getRedirectResult } from 'firebase/auth';
-import { useEffect } from 'react';
-// import { createAuthUserWithEmailAndPassword, createUserDocFromAuth } from '../../utils/firebase/firebase.utils'
 import {
     auth,
-    // signInWithGooglePopup,
     createUserDocFromAuth,
     signInAuthUserWithEmailAndPassword,
     signInWithGoogleRedirect
@@ -25,8 +21,6 @@ const SignInForm = () => {
     const [fields, setFields] = useState(formDefaultFields);
     const { email, password,} = fields;
 
-    const {setCurrentUser} =useContext(UserContext);
-
     const formHandler = (e) => {
         const { name, value } = e.target;
         setFields({ ...fields, [name]: value })
@@ -36,11 +30,9 @@ const SignInForm = () => {
     useEffect(() => {
         const data = async()=>{
             const response = await getRedirectResult(auth);
-            // console.log(response)
 
             if(response){
-                const userDocRef=await createUserDocFromAuth(response.user);
-                // console.log(userDocRef)
+                await createUserDocFromAuth(response.user);
             }
         }
         data();
@@ -56,9 +48,8 @@ const SignInForm = () => {
 
         try {
             const {user} = await signInAuthUserWithEmailAndPassword(email,password);
-            // console.log(user);
 
-            setCurrentUser(user);
+            
 
             reset();
         } catch (error) {
@@ -101,8 +92,8 @@ const SignInForm = () => {
                     value={password}
                 />
                 <div className='btns'>
-                <Button type="submit" props='Sign up' />
-                <Button type='button' btnType='google' props='Google Sign in' onClick={signInWithGoogleRedirect} />
+                <Button type="submit" props='Sign in' />
+                <Button type='button' btnType='google' props='sign in with google' onClick={signInWithGoogleRedirect}></Button>
                 </div>
             </form>
         </div>
